@@ -1,0 +1,12 @@
+@startuml
+!include C4_Context.puml
+
+LAYOUT_WITH_LEGEND()
+
+title System Context diagram for GophKeeper
+
+Person(user, "Пользователь")
+System(gophkeeper_system, "GophKeeper", "Позволяет надёжно и безопасно хранить логины, пароли, бинарные данные и прочую приватную информацию.")
+
+Rel(user, gophkeeper_system, "Хранит приватные данные")
+@enduml

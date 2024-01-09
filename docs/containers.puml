@@ -1,0 +1,31 @@
+@startuml
+!include C4_Container.puml
+
+LAYOUT_WITH_LEGEND()
+LAYOUT_LANDSCAPE()
+
+title Container diagram for GophKeeper
+
+Person(user, "Пользователь")
+
+System_Boundary(c1, "GophKeeper") {
+    Container(console_app, "Client", "Console", "Предоставляет возможность пользователю хранить приватные данные на сервере")
+    Container(sso_microservice, "SSO Microservice", "Golang", "Предоставляет JWT токен авторизации")
+    Container(accounts_microservice, "Accounts Microservice", "Golang", "Позволяет создавать, редактировать и удалять данные аккаунтов")
+    Container(text_microservice, "Text Microservice", "Golang", "Позволяет создавать, редактировать и удалять текстовые данные")
+    ContainerDb(sso_database, "SSO Database", "SQL Database", "Хранит данные пользователей и приложений")
+    ContainerDb(accounts_database, "Accounts Database", "SQL Database", "Хранит данные аккаунтов")
+    ContainerDb(text_database, "Text Database", "SQL Database", "Хранит текстовые данные")
+}
+
+Rel(user, console_app, "Использует")
+
+Rel(console_app, sso_microservice, "Использует", "gRPC")
+Rel(console_app, accounts_microservice, "Использует", "gRPC")
+Rel(console_app, text_microservice, "Использует", "gRPC")
+
+Rel(sso_microservice, "sso_database", "Сохраняет и читает")
+Rel(accounts_microservice, "accounts_database", "Сохраняет и читает")
+Rel(text_microservice, "text_database", "Сохраняет и читает")
+
+@enduml

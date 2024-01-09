@@ -13,4 +13,8 @@
 ### Диаграмма C4
 
 1. [Context](./docs/context.puml)
+    
+   ![Context](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/slavkluev/gophkeeper/main/docs/context.puml)
 2. [Containers](./docs/containers.puml)
+   
+   ![Containers](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/slavkluev/gophkeeper/main/docs/containers.puml)

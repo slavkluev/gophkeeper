@@ -1,5 +1,5 @@
 @startuml
-!include C4_Container.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
 LAYOUT_WITH_LEGEND()
 LAYOUT_LANDSCAPE()
@@ -27,5 +27,4 @@ Rel(console_app, text_microservice, "Использует", "gRPC")
 Rel(sso_microservice, "sso_database", "Сохраняет и читает")
 Rel(accounts_microservice, "accounts_database", "Сохраняет и читает")
 Rel(text_microservice, "text_database", "Сохраняет и читает")
-
 @enduml

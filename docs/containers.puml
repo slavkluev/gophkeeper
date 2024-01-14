@@ -13,9 +13,11 @@ System_Boundary(c1, "GophKeeper") {
     Container(sso_microservice, "SSO Microservice", "Golang", "Предоставляет JWT токен авторизации")
     Container(accounts_microservice, "Accounts Microservice", "Golang", "Позволяет создавать, редактировать и удалять данные аккаунтов")
     Container(text_microservice, "Text Microservice", "Golang", "Позволяет создавать, редактировать и удалять текстовые данные")
+    Container(cards_microservice, "Cards Microservice", "Golang", "Позволяет создавать, редактировать и удалять данные банковских карт")
     ContainerDb(sso_database, "SSO Database", "SQL Database", "Хранит данные пользователей и приложений")
     ContainerDb(accounts_database, "Accounts Database", "SQL Database", "Хранит данные аккаунтов")
     ContainerDb(text_database, "Text Database", "SQL Database", "Хранит текстовые данные")
+    ContainerDb(cards_database, "Cards Database", "SQL Database", "Хранит данные банковских карт")
 }
 
 Rel(user, console_app, "Использует")
@@ -23,8 +25,10 @@ Rel(user, console_app, "Использует")
 Rel(console_app, sso_microservice, "Использует", "gRPC")
 Rel(console_app, accounts_microservice, "Использует", "gRPC")
 Rel(console_app, text_microservice, "Использует", "gRPC")
+Rel(console_app, cards_microservice, "Использует", "gRPC")
 
 Rel(sso_microservice, "sso_database", "Сохраняет и читает")
 Rel(accounts_microservice, "accounts_database", "Сохраняет и читает")
 Rel(text_microservice, "text_database", "Сохраняет и читает")
+Rel(cards_microservice, "cards_database", "Сохраняет и читает")
 @enduml
